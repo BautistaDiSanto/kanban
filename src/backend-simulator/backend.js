@@ -35,7 +35,7 @@ export const doLoginUser = async (user) => {
   );
 
   if (!userFound) {
-    return response(false, "La contraseña es incorrecta");
+    return response(false, "Usuario o contraseña invalidos");
   }
 
   // si llega hasta aca, significa que la promesa se resuelve bien

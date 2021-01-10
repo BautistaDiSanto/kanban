@@ -1,4 +1,4 @@
-import { doRegisterUser } from "../backend-simulator/backend";
+import { doRegisterUser, doLoginUser } from "../backend-simulator/backend";
 
 export const useAuth = () => {
   return {
@@ -15,8 +15,18 @@ export const useAuth = () => {
         return response;
       }
     },
-    logUser: (user) => {
-      console.log(user);
+    logUser: async (user) => {
+      try {
+        const response = await doLoginUser(user);
+        return response;
+      } catch (error) {
+        const response = {
+          ok: false,
+          error: "No se ha podido conectar al servidor",
+          payload: "",
+        };
+        return response;
+      }
     },
   };
 };
